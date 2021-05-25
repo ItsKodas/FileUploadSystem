@@ -12,16 +12,30 @@
     <button onclick="return upload()">Upload</button>
 
     <script>
-        function upload() {
 
+        function upload() {
             fetch("/upload", {
                 method: "POST",
-                body: JSON.stringify({value: 'Hello World!'})
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify({
+                    file: document.getElementById('input').files[0]
+                })
             }).then(res => {
                 console.log(res);
             });
 
             return false
+        }
+
+
+        function sendFiles() {
+            const imgs = document.querySelectorAll(".obj");
+
+            for (let i = 0; i < imgs.length; i++) {
+                new FileUpload(imgs[i], imgs[i].file);
+            }
         }
     </script>
 

@@ -9,7 +9,8 @@ app.listen('80')
 app.set('view engine', 'ejs')
 app.use(morgan('dev'))
 app.use(cookieParser())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 
