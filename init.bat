@@ -1,13 +1,4 @@
 @echo off
 title Installing Modules..
 
-powershell npm i express
-powershell npm i ejs
-powershell npm i node-fetch
-powershell npm i fs
-powershell npm i morgan
-powershell npm i dotenv
-powershell npm i body-parser
-powershell npm i cookie-parser
-powershell npm i body-parser
-powershell npm i body-parser
+npm install express express-fileupload ejs node-fetch fs morgan dotenv body-parser cookie-parser --save
