@@ -8,3 +8,5 @@ powershell npm i fs
 powershell npm i morgan
 powershell npm i dotenv
 powershell npm i body-parser
+powershell npm i cookie-parser
+powershell npm i body-parser
