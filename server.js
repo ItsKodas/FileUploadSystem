@@ -1,13 +1,4 @@
-/*
-
-    * Details *
-
-*/
-
-
-
-//Express
-
+// Express
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
@@ -22,7 +13,15 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 
-// App & Site
+// MongoDB connection
+/*mongoose.connect('mongodb://127.0.0.1:27017/uploader', {
+    useNewUrlParser: true
+});
 
-var log = require('./app/upload')
-log.logThis('Hello World!')
+mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);*/
+
+
+
+// App & Site
+require('./app/upload')(app)

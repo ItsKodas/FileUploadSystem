@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+<header>
+    <title>Uploader</title>
+</header>
+
+<form>
+
+    <input id="localFile" type="file">
+    <button onclick="return upload()">Upload</button>
+
+    <script>
+        function upload() {
+
+            fetch("/upload", {
+                method: "POST",
+                body: JSON.stringify({value: 'Hello World!'})
+            }).then(res => {
+                console.log(res);
+            });
+
+            return false
+        }
+    </script>
+
+</form>
+
+</html>
