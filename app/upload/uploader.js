@@ -1,7 +1,12 @@
+const fs = require('fs')
+
 module.exports = function (app) {
 
     app.get('/', async function (req, res) {
-        res.render('index')
+        
+        var uploads = await fs.readdirSync('./uploads')
+        
+        res.render('index', { uploads })
     })
 
     app.post('/upload', async function (req, res) {

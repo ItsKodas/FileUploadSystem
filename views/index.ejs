@@ -8,37 +8,42 @@
 
 <form>
 
-    <input id="localFile" type="file">
+    <input id="fileInput" type="file">
     <button onclick="return upload()">Upload</button>
 
     <script>
 
         function upload() {
-            fetch("/upload", {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                },
-                body: JSON.stringify({
-                    file: document.getElementById('input').files[0]
+            var formdata = new FormData();
+            formdata.append("avatar", fileInput.files[0]);
+
+            var requestOptions = {
+                method: 'POST',
+                body: formdata,
+                redirect: 'follow'
+            };
+
+            fetch("http://localhost/upload", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    console.log(result)
+                    location.reload();
                 })
-            }).then(res => {
-                console.log(res);
-            });
+                .catch(error => {
+                    console.log('error', error)
+                });
 
             return false
         }
 
-
-        function sendFiles() {
-            const imgs = document.querySelectorAll(".obj");
-
-            for (let i = 0; i < imgs.length; i++) {
-                new FileUpload(imgs[i], imgs[i].file);
-            }
-        }
     </script>
 
 </form>
+
+<% uploads.forEach(file=> { %>
+
+    <img src="/uploads/<%= file %>" style="height: 300px;" />
+
+    <% }) %>
 
 </html>

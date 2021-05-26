@@ -3,6 +3,9 @@ const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const fileUpload = require('express-fileupload')
+const cors = require('cors')
+const _ = require('lodash');
 
 var app = express()
 app.listen('80')
@@ -11,6 +14,13 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
+
+app.use(fileUpload({
+    createParentPath: true
+}));
+
+app.use('/uploads', express.static('uploads', ))
 
 
 
